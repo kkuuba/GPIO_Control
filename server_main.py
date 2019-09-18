@@ -1,4 +1,4 @@
-from home_smart_server import HomeSmartServer
+from home_smart_server import HomeSmartServer, get_ip_address_of_current_device
 
 """
 ########################################################################################################################
@@ -12,7 +12,7 @@ config = {"task_1": 21,
           "task_4": 24}
 
 destination_port = 1111
-private_secret_key = "okon"
+private_secret_key = "XXXXXXXXXX"
 
 """
 ########################################################################################################################
@@ -32,8 +32,14 @@ def _create_gpio_pin_list():
 
 
 def create_android_app_cfg_string():
-    return "asd"
+    config_string = str(get_ip_address_of_current_device) + "#@#" + str(
+        destination_port) + "#@#" + private_secret_key + "#@#" + str(config.keys())
 
+    return config_string
+
+
+f = open("android_config.txt", "w")
+f.write(create_android_app_cfg_string())
 
 connection_observer = HomeSmartServer(destination_port, private_secret_key, _create_task_list(),
                                       _create_gpio_pin_list())
