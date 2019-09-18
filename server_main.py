@@ -6,17 +6,38 @@ Here is example configuration of connection observer with 2 tasks
 ########################################################################################################################
 ----->
 """
+config = {"task_1": 21,
+          "task_2": 22,
+          "task_3": 23,
+          "task_4": 24}
 
-private_secret_key = 'ASg453Jd3rdr43dfr4443dfsdf'
-connection_observer = HomeSmartServer(6555, private_secret_key, ['open_fence_gate', 'open_garage_gate'],
-                                      [21, 11])
-connection_observer.start_server()
+destination_port = 1111
+private_secret_key = "okon"
 
 """
 ########################################################################################################################
 End of configuration code
 ########################################################################################################################
 """
+
+
+def _create_task_list():
+    task_list = config.keys()
+    return task_list
+
+
+def _create_gpio_pin_list():
+    gpio_pin_list = config.values()
+    return gpio_pin_list
+
+
+def create_android_app_cfg_string():
+    return "asd"
+
+
+connection_observer = HomeSmartServer(destination_port, private_secret_key, _create_task_list(),
+                                      _create_gpio_pin_list())
+connection_observer.start_server()
 
 while True:
     print('waiting for a connection')

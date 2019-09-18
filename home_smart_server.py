@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 from datetime import datetime
 
 
-def _get_ip_address_of_current_device():
+def get_ip_address_of_current_device():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
     ip = s.getsockname()[0]
@@ -73,7 +73,7 @@ class HomeSmartServer:
 
     def _some_operations_before_starting_the_server(self):
         self._create_task_dict()
-        self.server_address = _get_ip_address_of_current_device(), self.server_port
+        self.server_address = get_ip_address_of_current_device(), self.server_port
         self._prepare_raspberry_gpio()
 
     def start_server(self):
