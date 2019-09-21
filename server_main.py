@@ -6,13 +6,13 @@ Here is example configuration of connection observer with 2 tasks
 ########################################################################################################################
 ----->
 """
-config = {"task_1": 21,
-          "task_2": 22,
-          "task_3": 23,
-          "task_4": 24}
+config = {"open_fence_gate": 24,
+          "A": 22,
+          "B": 23,
+          "C": 24}
 
-destination_port = 1111
-private_secret_key = "XXXXXXXXXX"
+destination_port = 6785
+private_secret_key = "okon"
 
 """
 ########################################################################################################################
@@ -22,18 +22,20 @@ End of configuration code
 
 
 def _create_task_list():
-    task_list = config.keys()
+    task_list = list(config.keys())
     return task_list
 
 
 def _create_gpio_pin_list():
-    gpio_pin_list = config.values()
+    gpio_pin_list = list(config.values())
     return gpio_pin_list
 
 
 def create_android_app_cfg_string():
+    task_list = list(config.keys())
     config_string = str(get_ip_address_of_current_device) + "#@#" + str(
-        destination_port) + "#@#" + private_secret_key + "#@#" + str(config.keys())
+        destination_port) + "#@#" + private_secret_key + "#@#" + task_list[0] + "###" + task_list[1] + "###" + \
+                    task_list[2] + "###" + task_list[3]
 
     return config_string
 
