@@ -33,9 +33,9 @@ def _create_gpio_pin_list():
 
 def create_android_app_cfg_string():
     task_list = list(config.keys())
-    config_string = str(get_ip_address_of_current_device) + "#@#" + str(
+    config_string = get_ip_address_of_current_device() + "#@#" + str(
         destination_port) + "#@#" + private_secret_key + "#@#" + task_list[0] + "###" + task_list[1] + "###" + \
-                    task_list[2] + "###" + task_list[3]
+                    task_list[2] + "###" + task_list[3]ls
 
     return config_string
 
