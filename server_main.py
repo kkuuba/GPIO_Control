@@ -6,9 +6,9 @@ Here is example configuration of connection observer with 2 tasks
 ########################################################################################################################
 ----->
 """
-config = {"open_fence_gate": 24,
-          "A": 22,
-          "B": 23,
+config = {"open_fence_gate": 14,
+          "A": 15,
+          "B": 25,
           "C": 24}
 
 destination_port = 6785
@@ -35,7 +35,7 @@ def create_android_app_cfg_string():
     task_list = list(config.keys())
     config_string = get_ip_address_of_current_device() + "#@#" + str(
         destination_port) + "#@#" + private_secret_key + "#@#" + task_list[0] + "###" + task_list[1] + "###" + \
-                    task_list[2] + "###" + task_list[3]ls
+                    task_list[2] + "###" + task_list[3]
 
     return config_string
 
