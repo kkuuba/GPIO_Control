@@ -24,7 +24,7 @@ def _start_raspberry_gpio_task(gpio_pin_id):
 def save_logging_info_to_log_file(task_string, gpio_pin, client_ip):
     file = open('log_info.txt', 'a+')
     time_stamp = datetime.fromtimestamp(time()).strftime('%Y-%m-%d %H:%M:%S')
-    file.write(time_stamp + ' | ' + task_string + ' | ' + client_ip + ' | ' + 'Setting ' +
+    file.write(time_stamp + ' | ' + task_string + ' | ' + client_ip[0] + ' | ' + 'Setting ' +
                str(gpio_pin) + ' gpio pin HIGH on 1000 ms interval\n')
     file.close()
 
