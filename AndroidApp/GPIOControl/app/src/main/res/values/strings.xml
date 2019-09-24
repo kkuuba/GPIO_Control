@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">GPIO-Control</string>
+    <string name="task_1">TASK 1</string>
+    <string name="task_2">TASK 2</string>
+    <string name="task_3">TASK 3</string>
+    <string name="task_4">TASK 4</string>
+    <string name="waiting_for_action">Waiting for action …</string>
+    <string name="button_locked">Button is locked</string>
+    <string name="paste_config_string">Enter config string …</string>
+    <string name="first_run_string">Before use enter config string</string>
+    <string name="config_box_empty">Config box cannot be empty</string>
+    <string name="bad_format_of_cfg">Bad format of config string</string>
+</resources>

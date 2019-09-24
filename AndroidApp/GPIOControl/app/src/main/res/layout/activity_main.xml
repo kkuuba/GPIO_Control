@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_weight="2"
+            android:fontFamily="casual"
+            android:onClick="task_1_event"
+            android:scaleType="center"
+            android:text="@string/task_1"
+            android:textSize="25sp"
+            tools:targetApi="o" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_weight="2"
+            android:fontFamily="casual"
+            android:onClick="task_2_event"
+            android:scaleType="center"
+            android:text="@string/task_2"
+            android:textSize="25sp"
+            tools:targetApi="o" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_weight="2"
+            android:fontFamily="casual"
+            android:onClick="task_3_event"
+            android:scaleType="center"
+            android:text="@string/task_3"
+            android:textSize="25sp"
+            tools:targetApi="o" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_weight="2"
+            android:fontFamily="casual"
+            android:onClick="task_4_event"
+            android:scaleType="center"
+            android:text="@string/task_4"
+            android:textSize="25sp"
+            tools:targetApi="o" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="casual"
+            android:layout_marginVertical="20dp"
+            android:text="@string/waiting_for_action"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            tools:targetApi="o"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:layout_weight="1"
+            android:indeterminate="false"
+            android:visibility="invisible"
+            tools:targetApi="o" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="@string/paste_config_string"
+                android:visibility="invisible"
+                tools:visibility="invisible" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                app:srcCompat="@android:drawable/ic_menu_edit"
+                android:onClick="add_new_config_string"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

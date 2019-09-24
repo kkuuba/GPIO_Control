@@ -1,7 +1,9 @@
-package com.example.homeapp;
+package com.example.gpio_control;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -20,7 +22,7 @@ import java.security.NoSuchAlgorithmException;
 public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
 
     public TextView output_string;
-    public Progressbar progress_bar;
+    public ProgressBar progress_bar;
     public String output;
     private String target_device_ip;
     private int target_device_port;
@@ -38,8 +40,7 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
         private_key = key;
         task_string = task;
         output_string = textView;
-        progress_bar = progressBar
-
+        progress_bar = progressBar;
     }
 
     private void send_task_to_device() {
@@ -155,7 +156,6 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
 
     @Override
     protected Void doInBackground(Void... voids) {
-        this.progress_bar.setVisibility(View.VISIBLE);
         this.send_task_to_device();
         return null;
     }
@@ -163,12 +163,13 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void result) {
         if (this.output.equals("OK. Starting task ...")) {
+            this.progress_bar.setVisibility(View.INVISIBLE);
             this.output_string.setTextColor(Color.GREEN);
         } else {
+            this.progress_bar.setVisibility(View.INVISIBLE);
             this.output_string.setTextColor(Color.RED);
         }
         this.output_string.setText(this.output);
-        this.progress_bar.setVisibility(View.INVISIBLE);
         super.onPostExecute(result);
     }
 
