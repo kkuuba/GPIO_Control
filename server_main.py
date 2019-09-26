@@ -6,10 +6,12 @@ Here is example configuration of connection observer with 2 tasks
 ########################################################################################################################
 ----->
 """
-config = {"open_fence_gate": 14,
-          "A": 15,
-          "B": 25,
-          "C": 24}
+config = {"a": 14,
+          "b": 15,
+          "c": 25,
+          "d": 24,
+          "e": 25,
+          }
 
 destination_port = 6785
 private_secret_key = "okon"
