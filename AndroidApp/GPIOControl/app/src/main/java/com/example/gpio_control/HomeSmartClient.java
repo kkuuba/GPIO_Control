@@ -1,10 +1,14 @@
 package com.example.gpio_control;
 
+import android.app.Activity;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.PermissionChecker;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -135,7 +139,7 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
     }
 
     private String create_messege_string() {
-        return this.update_public_key(this.private_key) + "@#@" + this.task_string + "@#@" + this.gpio_action;
+        return this.update_public_key(this.private_key) + "@#@" + this.task_string + "@#@" + this.gpio_action_string;
     }
 
     private String SHA256(String input) {
@@ -167,6 +171,7 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
         if (this.output.equals("OK. Starting task ...")) {
             this.progress_bar.setVisibility(View.INVISIBLE);
             this.output_string.setTextColor(Color.GREEN);
+
         } else {
             this.progress_bar.setVisibility(View.INVISIBLE);
             this.output_string.setTextColor(Color.RED);

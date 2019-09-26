@@ -15,8 +15,8 @@
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_weight="2"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="3"
             android:fontFamily="casual"
             android:onClick="task_1_event"
             android:scaleType="center"
@@ -28,8 +28,8 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_weight="2"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="3"
             android:fontFamily="casual"
             android:onClick="task_2_event"
             android:scaleType="center"
@@ -41,8 +41,8 @@
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_weight="2"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="3"
             android:fontFamily="casual"
             android:onClick="task_3_event"
             android:scaleType="center"
@@ -50,18 +50,31 @@
             android:textSize="25sp"
             tools:targetApi="o" />
 
-        <Button
-            android:id="@+id/button4"
+        <Switch
+            android:id="@+id/switch1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:layout_weight="2"
             android:fontFamily="casual"
-            android:onClick="task_4_event"
-            android:scaleType="center"
-            android:text="@string/task_4"
-            android:textSize="25sp"
-            tools:targetApi="o" />
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="3"
+            android:text="@string/task_4_sw"
+            tools:targetApi="o"
+            android:onClick="task_4_sw_event"/>
+
+        <Switch
+            android:id="@+id/switch2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="casual"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_marginVertical="5dp"
+            android:layout_weight="3"
+            android:text="@string/task_5_sw"
+            tools:targetApi="o"
+            android:onClick="task_5_sw_event"/>
 
         <TextView
             android:id="@+id/textView"
@@ -69,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="casual"
-            android:layout_marginVertical="20dp"
+            android:layout_marginVertical="10dp"
             android:text="@string/waiting_for_action"
             android:textAlignment="center"
             android:textSize="25sp"

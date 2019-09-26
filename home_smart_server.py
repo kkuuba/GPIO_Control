@@ -108,5 +108,5 @@ class HomeSmartServer:
             if received_data.split("@#@")[1] == task_string:
                 _start_raspberry_gpio_task(self.task_dict[task_string], received_data.split("@#@")[2])
                 save_logging_info_to_log_file(task_string, self.task_dict[task_string], client_ip)
-                print('Starting ' + str(self.task_dict[task_string]) + 'gpio pin' + received_data.split("@#@")[
+                print('Starting ' + str(self.task_dict[task_string]) + ' gpio pin ' + received_data.split("@#@")[
                     2] + ' task ')
