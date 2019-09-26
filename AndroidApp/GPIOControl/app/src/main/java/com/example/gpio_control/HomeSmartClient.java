@@ -31,9 +31,10 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
     private Socket sock;
     private boolean all_previous_passed_with_success = true;
     private String receiver_msg;
+    private String gpio_action_string;
 
 
-    HomeSmartClient(String ip, int port, String key, String task, TextView textView, ProgressBar progressBar) {
+    HomeSmartClient(String ip, int port, String key, String task, String gpio_action, TextView textView, ProgressBar progressBar) {
 
         target_device_ip = ip;
         target_device_port = port;
@@ -41,6 +42,7 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
         task_string = task;
         output_string = textView;
         progress_bar = progressBar;
+        gpio_action_string = gpio_action;
     }
 
     private void send_task_to_device() {
@@ -133,7 +135,7 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
     }
 
     private String create_messege_string() {
-        return this.update_public_key(this.private_key) + "@#@" + this.task_string;
+        return this.update_public_key(this.private_key) + "@#@" + this.task_string + "@#@" + this.gpio_action;
     }
 
     private String SHA256(String input) {

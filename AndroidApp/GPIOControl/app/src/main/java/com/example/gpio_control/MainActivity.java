@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textView);
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_1, textView, progressBar);
+        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_1, "impulse", textView, progressBar);
         progressBar.setVisibility(View.VISIBLE);
         task1.execute();
 
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textView);
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_2, textView, progressBar);
+        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_2, "impulse", textView, progressBar);
         progressBar.setVisibility(View.VISIBLE);
         task1.execute();
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textView);
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_3, textView, progressBar);
+        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_3, "impulse", textView, progressBar);
         progressBar.setVisibility(View.VISIBLE);
         task1.execute();
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.textView);
         ProgressBar progressBar = findViewById(R.id.progressBar);
-        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_4, textView, progressBar);
+        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_4, "impulse", textView, progressBar);
         progressBar.setVisibility(View.VISIBLE);
         task1.execute();
 
