@@ -12,26 +12,30 @@ def get_ip_address_of_current_device():
     s.close()
     return ip
 
-def _gpio_impulse_task(duration):
+
+def _gpio_impulse_task(gpio_pin_id, duration):
     GPIO.output(gpio_pin_id, GPIO.HIGH)
     sleep(duration)
     GPIO.output(gpio_pin_id, GPIO.LOW)
     sleep(1)
 
-def _gpio_change_state_task(task_data):
-    if task_data=="on":
+
+def _gpio_change_state_task(gpio_pin_id, task_data):
+    if task_data == "on":
         GPIO.output(gpio_pin_id, GPIO.HIGH)
         sleep(1)
-    if task_data=="off":
+    if task_data == "off":
         GPIO.output(gpio_pin_id, GPIO.LOW)
         sleep(1)
 
+
 def _start_raspberry_gpio_task(gpio_pin_id, gpio_action_string):
     print("starting gpio task ...\n")
-    if gpio_action_string=="impulse":
-        _gpio_impulse_task(1)
+    if gpio_action_string == "impulse":
+        _gpio_impulse_task(gpio_pin_id, 1)
     else:
-        _gpio_change_state_task(gpio_action_string)
+        _gpio_change_state_task(gpio_pin_id, gpio_action_string)
+
 
 def save_logging_info_to_log_file(task_string, gpio_pin, client_ip):
     file = open('log_info.txt', 'a+')
@@ -104,4 +108,5 @@ class HomeSmartServer:
             if received_data.split("@#@")[1] == task_string:
                 _start_raspberry_gpio_task(self.task_dict[task_string], received_data.split("@#@")[2])
                 save_logging_info_to_log_file(task_string, self.task_dict[task_string], client_ip)
-                print('Starting ' + str(self.task_dict[task_string]) + 'gpio pin' + received_data.split("@#@")[2] + ' task ')
+                print('Starting ' + str(self.task_dict[task_string]) + 'gpio pin' + received_data.split("@#@")[
+                    2] + ' task ')
