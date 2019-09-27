@@ -2,6 +2,7 @@ package com.example.gpio_control;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     TextView textView;
     ProgressBar progressBar;
     EditText config_string_box;
-
+    Handler handler;
     private String IP_of_remote_host;
     private int PORT_of_reomte_host;
     private String Private_secret_key;
@@ -54,35 +55,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void task_1_event(View view) {
-        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_1, "impulse", textView, progressBar);
-        progressBar.setVisibility(View.VISIBLE);
-        task1.execute();
+        send_task("bt", task_1, "impulse");
     }
 
     public void task_2_event(View view) {
-        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_2, "impulse", textView, progressBar);
-        progressBar.setVisibility(View.VISIBLE);
-        task1.execute();
+        send_task("bt", task_2, "impulse");
     }
 
     public void task_3_event(View view) {
-        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_3, "impulse", textView, progressBar);
-        progressBar.setVisibility(View.VISIBLE);
-        task1.execute();
+        send_task("bt", task_3, "impulse");
+
     }
 
     public void task_4_sw_event(View view) {
         boolean on = ((Switch) view).isChecked();
 
         if (on) {
-            HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_4_sw, "on", textView, progressBar);
-            progressBar.setVisibility(View.VISIBLE);
-            task1.execute();
+            send_task("sw_1", task_4_sw, "on");
         } else {
-            HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_4_sw, "off", textView, progressBar);
-            progressBar.setVisibility(View.VISIBLE);
-            task1.execute();
-            button1.setText(task1.output_string.getText());
+            send_task("sw_1", task_4_sw, "off");
         }
     }
 
@@ -90,16 +81,20 @@ public class MainActivity extends AppCompatActivity {
         boolean on = ((Switch) view).isChecked();
 
         if (on) {
-            HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_5_sw, "on", textView, progressBar);
-            progressBar.setVisibility(View.VISIBLE);
-            task1.execute();
+            send_task("sw_2", task_5_sw, "on");
         } else {
-            HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task_5_sw, "off", textView, progressBar);
-            progressBar.setVisibility(View.VISIBLE);
-            task1.execute();
+            send_task("sw_2", task_5_sw, "off");
         }
     }
 
+    public void send_task(String interface_id, String task, String gpio_action) {
+        HomeSmartClient task1 = new HomeSmartClient(IP_of_remote_host, PORT_of_reomte_host, Private_secret_key, task, gpio_action, textView, progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        task1.execute();
+        if (!interface_id.equals("bt")) {
+            wait_for_save_switch_state_approval(gpio_action, interface_id);
+        }
+    }
 
     public void add_new_config_string(View view) {
         if (config_string_box.getVisibility() == View.INVISIBLE) {
@@ -183,9 +178,12 @@ public class MainActivity extends AppCompatActivity {
         task_5_sw = load_string_from_database("TASK_5_SW");
     }
 
-    public void save_switch_states(String state) {
-            save_string_to_data_base("SW_1_STATE", state);
-            save_string_to_data_base("SW_2_STATE", state);
+    public void save_switch_1_state(String state) {
+        save_string_to_data_base("SW_1_STATE", state);
+    }
+
+    public void save_switch_2_state(String state) {
+        save_string_to_data_base("SW_2_STATE", state);
     }
 
     private void load_switch_states_from_database() {
@@ -200,8 +198,25 @@ public class MainActivity extends AppCompatActivity {
         } else {
             switch_2.setChecked(false);
         }
-
-
     }
+
+    private void wait_for_save_switch_state_approval(final String state, final String button_id) {
+        handler = new Handler();
+        Runnable r = new Runnable() {
+            public void run() {
+                if (textView.getText().equals("OK. Starting task ...")) {
+                    if (button_id.equals("sw_1")) {
+                        save_switch_1_state(state);
+                    }
+                    if (button_id.equals("sw_2")) {
+                        save_switch_2_state(state);
+                    }
+                }
+                load_switch_states_from_database();
+            }
+        };
+        handler.postDelayed(r, 2000);
+    }
+
 
 }

@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.PermissionChecker;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -171,7 +168,6 @@ public class HomeSmartClient extends AsyncTask<Void, Void, Void> {
         if (this.output.equals("OK. Starting task ...")) {
             this.progress_bar.setVisibility(View.INVISIBLE);
             this.output_string.setTextColor(Color.GREEN);
-
         } else {
             this.progress_bar.setVisibility(View.INVISIBLE);
             this.output_string.setTextColor(Color.RED);
