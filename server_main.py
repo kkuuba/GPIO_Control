@@ -2,15 +2,15 @@ from home_smart_server import HomeSmartServer, get_ip_address_of_current_device
 
 """
 ########################################################################################################################
-Here is example configuration of connection observer with 2 tasks 
+Here is example configuration of connection observer of 3 impulse tasks and 2 switch tasks 
 ########################################################################################################################
 ----->
 """
-config = {"a": 14,
-          "b": 15,
-          "c": 25,
-          "d": 24,
-          "e": 25,
+config = {"task_1": 14,  # impulse task
+          "task_2": 15,  # impulse task
+          "task_3": 25,  # impulse task
+          "task_4": 24,  # switch task
+          "task_5": 25,  # switch task
           }
 
 destination_port = 6785
