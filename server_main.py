@@ -1,5 +1,5 @@
 from home_smart_server import HomeSmartServer
-from raspberry_utilities import get_ip_address_of_current_device
+import raspberry_utilities as rasp_util
 
 """
 ########################################################################################################################
@@ -23,32 +23,11 @@ End of configuration code
 ########################################################################################################################
 """
 
-
-def _create_task_list():
-    task_list = list(config.keys())
-    return task_list
-
-
-def _create_gpio_pin_list():
-    gpio_pin_list = list(config.values())
-    return gpio_pin_list
-
-
-def create_android_app_cfg_string():
-    task_list = list(config.keys())
-    config_string = get_ip_address_of_current_device() + "#@#" + str(
-        destination_port) + "#@#" + private_secret_key + "#@#" + task_list[0] + "###" + task_list[1] + "###" + \
-                    task_list[2] + "###" + task_list[3]
-
-    return config_string
-
-
 f = open("android_config.txt", "w")
-f.write(create_android_app_cfg_string())
+f.write(rasp_util.create_android_app_cfg_string(config, destination_port, private_secret_key))
 
-connection_observer = HomeSmartServer(destination_port, private_secret_key, _create_task_list(),
-                                      _create_gpio_pin_list())
-connection_observer.start_server()
+connection_observer = HomeSmartServer(destination_port, private_secret_key, rasp_util.create_task_list(config),
+                                      rasp_util.create_gpio_pin_list(config)).start_server()
 
 while True:
     print('waiting for a connection')
