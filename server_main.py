@@ -1,4 +1,5 @@
-from home_smart_server import HomeSmartServer, get_ip_address_of_current_device
+from home_smart_server import HomeSmartServer
+from raspberry_utilities import get_ip_address_of_current_device
 
 """
 ########################################################################################################################
@@ -14,7 +15,7 @@ config = {"task_1": 14,  # impulse task
           }
 
 destination_port = 6785
-private_secret_key = "okon"
+private_secret_key = "passwd"
 
 """
 ########################################################################################################################
