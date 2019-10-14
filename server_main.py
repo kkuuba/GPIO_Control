@@ -42,11 +42,10 @@ while True:
         if received_string:
             print("Received data: %s" % received_string)
             if connection_observer.verify_received_public_key(received_string):
-                response_data = 'starting_task\n'
-                connection_observer.start_action_if_task_string_known(received_string, client_address)
+                response_data = connection_observer.start_action_if_task_string_known(received_string, client_address)
             else:
                 response_data = 'inncorrect SHA-key\n'
-                print("bad data")
+                print("Authentication failed")
             response_data = response_data.encode("utf-8")
             connection.sendall(response_data)
         else:

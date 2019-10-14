@@ -63,3 +63,7 @@ class HomeSmartServer:
                 rasp_util.save_logging_info_to_log_file(task_string, self.task_dict[task_string], client_ip)
                 print('Starting ' + str(self.task_dict[task_string]) + ' gpio pin ' + received_data.split("@#@")[
                     2] + ' task ')
+
+            return 'starting_task\n'
+
+        return 'invalid task string\n'
