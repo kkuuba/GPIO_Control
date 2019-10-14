@@ -64,6 +64,6 @@ class HomeSmartServer:
                 print('Starting ' + str(self.task_dict[task_string]) + ' gpio pin ' + received_data.split("@#@")[
                     2] + ' task ')
 
-            return 'starting_task\n'
+                return 'starting_task\n'
 
         return 'invalid task string\n'
