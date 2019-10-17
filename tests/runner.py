@@ -36,12 +36,14 @@ for i in range(1, 5):
     assert test_connection(generate_public_key("passwd"), "task_1", "off") == "starting_task\n"
     print("Passed " + str(i) + " check")
 
-print("Case 2 ---> incorrect public key received")
+print("Case 2 ---> inncorrect public key received")
 for i in range(1, 5):
-    assert test_connection(generate_public_key("bad_passwd"), "task_1", "off") == "incorrect SHA-key\n"
+    assert test_connection(generate_public_key("bad_passwd"), "task_1", "off") == "inncorrect SHA-key\n"
     print("Passed " + str(i) + " check")
 
 print("Case 3 ---> non existing task string received")
 for i in range(1, 5):
     assert test_connection(generate_public_key("passwd"), "no_existing_task", "off") == "invalid task string\n"
     print("Passed " + str(i) + " check")
+
+print("All testcases finished with success")
