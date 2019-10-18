@@ -70,16 +70,6 @@ def save_logging_info_to_log_file(task_string, gpio_pin, client_ip):
     file.close()
 
 
-def create_task_list(config):
-    task_list = list(config.keys())
-    return task_list
-
-
-def create_gpio_pin_list(config):
-    gpio_pin_list = list(config.values())
-    return gpio_pin_list
-
-
 def create_android_app_cfg_string(config, destination_port, private_secret_key):
     task_list = list(config.keys())
     config_string = get_ip_address_of_current_device() + "#@#" + str(

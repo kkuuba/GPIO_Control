@@ -26,8 +26,8 @@ End of configuration code
 f = open("android_config.txt", "w")
 f.write(rasp_util.create_android_app_cfg_string(config, destination_port, private_secret_key))
 
-connection_observer = HomeSmartServer(destination_port, private_secret_key, rasp_util.create_task_list(config),
-                                      rasp_util.create_gpio_pin_list(config))
+connection_observer = HomeSmartServer(destination_port, private_secret_key, list(config.keys()),
+                                      list(config.values()))
 connection_observer.start_server()
 
 while True:
