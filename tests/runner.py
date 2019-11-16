@@ -1,6 +1,8 @@
 import socket
 from hashlib import sha256
 from time import time
+import subprocess
+from termcolor import colored
 
 
 def get_ip_address_of_current_device():
@@ -31,19 +33,24 @@ def test_connection(public_key, task_string, gpio_action):
     return response.decode("utf-8")
 
 
+subprocess.call(["python3", "..//server_main.py"])  # run server side
+green = lambda text: '\033[0;32m' + text + '\033[0m'
+
 print("Case 1 ---> correct data received")
 for i in range(1, 5):
     assert test_connection(generate_public_key("passwd"), "task_1", "off") == "starting_task\n"
-    print("Passed " + str(i) + " check")
+    print(colored("Passed " + str(i) + " check", "green"))
 
 print("Case 2 ---> inncorrect public key received")
 for i in range(1, 5):
     assert test_connection(generate_public_key("bad_passwd"), "task_1", "off") == "inncorrect SHA-key\n"
-    print("Passed " + str(i) + " check")
+    print(colored("Passed " + str(i) + " check", "green"))
 
 print("Case 3 ---> non existing task string received")
 for i in range(1, 5):
     assert test_connection(generate_public_key("passwd"), "no_existing_task", "off") == "invalid task string\n"
-    print("Passed " + str(i) + " check")
+    print(colored("Passed " + str(i) + " check", "green"))
 
-print("All testcases finished with success")
+print(colored("\n########################################################################\n", "green"))
+print(colored("All testcases finished with success", "green"))
+print(colored("\n########################################################################\n", "green"))
