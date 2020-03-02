@@ -1,7 +1,8 @@
 import socket
 from hashlib import sha256
 from time import time
-import subprocess
+import threading
+import os
 from termcolor import colored
 
 
@@ -33,7 +34,13 @@ def test_connection(public_key, task_string, gpio_action):
     return response.decode("utf-8")
 
 
-subprocess.call(["python3", "..//server_main.py"])  # run server side
+def start_server():
+    os.system("python3 ../server_main.py")
+
+
+background_server_run = threading.Thread(target=start_server, args=())
+background_server_run.daemon = True
+background_server_run.start()
 green = lambda text: '\033[0;32m' + text + '\033[0m'
 
 print("Case 1 ---> correct data received")

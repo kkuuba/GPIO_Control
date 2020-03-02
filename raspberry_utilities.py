@@ -5,7 +5,7 @@ from datetime import datetime
 try:
     import RPi.GPIO as GPIO
 except ImportError:
-    import tests.GPIO_abstract as GPIO
+    import GPIO_abstract as GPIO
 
 
 def get_ip_address_of_current_device():
