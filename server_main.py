@@ -7,15 +7,15 @@ Here is example configuration of connection observer of 3 impulse tasks and 2 sw
 ########################################################################################################################
 ----->
 """
-config = {"task_1": 14,  # impulse task
-          "task_2": 15,  # impulse task
-          "task_3": 25,  # impulse task
-          "task_4": 24,  # switch task
-          "task_5": 25,  # switch task
+config = {"task_1": 14,  # impulse task (you can change 'task_1' to your own name)
+          "task_2": 15,  # impulse task (you can change 'task_2' to your own name)
+          "task_3": 25,  # impulse task (you can change 'task_3' to your own name)
+          "task_4": 24,  # switch task (you can change 'task_4' to your own name)
+          "task_5": 25,  # switch task (you can change 'task_5' to your own name)
           }
 
 destination_port = 6785
-private_secret_key = "passwd"
+private_secret_key = "passwd"  # maybe change on something more complicated ...
 
 """
 ########################################################################################################################
